@@ -1,6 +1,10 @@
 name: Compilar Vectornex
 
+# Todos los días revisa si ArtCraft publicó una versión nueva y, si la hay, la compila y publica.
+# También se puede ejecutar a mano (Actions → Compilar Vectornex → Run workflow).
 on:
+  schedule:
+    - cron: "21 9 * * *"
   workflow_dispatch:
     inputs:
       ref:
@@ -11,16 +15,21 @@ on:
         description: "Publicar la versión"
         type: boolean
         default: true
+      forzar:
+        description: "Compilar aunque ya esté publicada"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
 
 jobs:
-  compilar:
-    uses: jacnexstudio/jacnex-build/.github/workflows/compilar-windows.yml@main
+  actualizar:
+    uses: jacnexstudio/jacnex-build/.github/workflows/actualizar.yml@main
     with:
       proyecto: vectorcraft
       upstream: storytold/vectorcraft
       nombre: Vectornex
       ref: ${{ inputs.ref }}
-      publicar: ${{ inputs.publicar }}
+      publicar: ${{ github.event_name == 'schedule' || inputs.publicar }}
+      forzar: ${{ inputs.forzar == true }}
