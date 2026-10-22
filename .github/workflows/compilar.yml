@@ -1,4 +1,4 @@
-name: Compilar Next Vector
+name: Compilar Vectornex
 
 on:
   workflow_dispatch:
@@ -21,6 +21,6 @@ jobs:
     with:
       proyecto: vectorcraft
       upstream: storytold/vectorcraft
-      nombre: Next Vector
+      nombre: Vectornex
       ref: ${{ inputs.ref }}
       publicar: ${{ inputs.publicar }}

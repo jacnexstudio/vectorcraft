@@ -1,4 +1,4 @@
-# Next Vector
+# Vectornex
 
 Ilustración vectorial. Parte de la suite Jacnex.
 
