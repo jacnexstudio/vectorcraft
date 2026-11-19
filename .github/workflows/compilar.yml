@@ -26,6 +26,8 @@ permissions:
 jobs:
   actualizar:
     uses: jacnexstudio/jacnex-build/.github/workflows/actualizar.yml@main
+    # Claves de R2: la versión publicada se copia a descargas.jacnex.store.
+    secrets: inherit
     with:
       proyecto: vectorcraft
       upstream: storytold/vectorcraft
